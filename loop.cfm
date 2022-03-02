@@ -6,20 +6,38 @@
     <input type="submit" name="getdata" value="getdata"/>
  </form>
 
-<CFSET allemployee=ArrayNew(1)>
 
-  <CFSET employee=StructNew()>
+ 
+<cfset emp= structNew()>
+
 <cfif structKeyExists(form,"getdata") and (cgi.REQUEST_METHOD is "post")>
   
+
+<cfset fArr = ArrayNew(1)>
+
+
+
+<cfset  StructInsert(emp, #form.key1#, #form.val1# )> 
     
+  <cfset cop= StructCopy(emp)>
+      
+<cfif StructIsEmpty(cop)>
+<cfoutput>
+  empty
+</cfoutput>
+
+<cfelse>
+<cfoutput>
+  not empty
+</cfoutput>
+  <cfset ArrayAppend(fArr,emp)>
   
-        <CFSET structInsert(employee, "#form.key1#", "#form.val1#",false)/>
-   <CFSET ArrayAppend(allemployee,employee )/>
 
-      <cfloop array="#allemployee#" item="item">
- <cfdump var="#allemployee#"/>
-</cfloop>
 
+ 
+<cfdump var = "#fArr#" >
 
 </cfif>
+</cfif>
 
+  

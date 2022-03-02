@@ -4,9 +4,9 @@
 
 
 <!--- This code creates a form with one field where the user enters the image file to upload. --->
-<form action="makeThumbnail.cfm" method="post" enctype="multipart/form-data">
+<form action="createThumb.cfm" method="post" enctype="multipart/form-data">
 image name <input type="text" name="imagenm" required=""/><br>
-image description <textarea name="imgdesc" required=""></textarea>
-Please upload an image: <input type="file" required="" name="image">
+image description <textarea name="imgdesc" required=""></textarea><br>
+Please upload an image: <input type="file" required="" name="image"><br>
 <input type="submit" value="Send Image" name="Submit">
 </form>
