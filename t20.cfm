@@ -52,6 +52,11 @@ If correct then Page should show the message(Email Address successfully subscrib
 	</cfif>
 	
 </cfif>
+<cfif(isDefined("form.ref"))>
+
+	<cfset captcha = createcaptcha()>
+	<cfset captchaHash = hash(captcha)>
+</cfif>
 
 <cfif showForm>
 
@@ -62,16 +67,16 @@ If correct then Page should show the message(Email Address successfully subscrib
 	
 	
 	<cfif isDefined("errors")>
-	<p>
+	<p align="center">
 	<b>Correct these errors:<br /><span style="color:red">#errors#</span></b>
 	</p>
 	</cfif>
 	
-	<form action="#cgi.script_name#" method="post" >
-	<table>
+	<form action="" method="post" >
+	<table align="center">
 		<tr>
 			<td>Email:</td>
-			<td><input name="email" type="text" ></td>
+			<td><input name="email" type="text" value="#form.email#"></td>
 		</tr>
 		
 		<tr>
@@ -83,6 +88,7 @@ If correct then Page should show the message(Email Address successfully subscrib
 			<cfimage action="captcha" width="300" height="75" text="#captcha#">
 			<input type="hidden" name="captchaHash" value="#captchaHash#">
 			</td>
+            <td><input type="submit" name"ref" value="refresh captcha"/></td>
 		</tr>		
 		<tr>
 			<td> </td>
@@ -96,7 +102,7 @@ If correct then Page should show the message(Email Address successfully subscrib
 
 	<cfoutput>
 	<p>
-	Email Address #form.email# successfully subscribe our newsletter 
+	Email Address #form.email# successfully subscribed to our newsletter 
 	</p>
 	</cfoutput>
 	
