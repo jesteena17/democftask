@@ -39,3 +39,23 @@ ArrayAppend(allemployee,employee );
 </cfloop>
 
 
+<cfif structKeyExists(Form,"formSubmit")>
+                <cfset key=Form.inputKey>
+                <cfset value=Form.inputValue>
+                </cfif>
+
+                <cfif NOT StructKeyExists(Session, "mystruct")>
+                    <cflock timeout=20 scope="Session" type="Exclusive">
+                    <cfset Session.mystruct = structNew()>
+                    </cflock>
+                </cfif>
+
+                <cfif StructKeyExists(Session, "mystruct")>
+                <cfif IsDefined("key") AND  IsDefined("value") >
+                    <cfif NOT StructKeyExists(Session.mystruct,"#key#")>
+                    <cfset Session.mystruct["#key#"] = #value#> 
+                    </cfif>
+                </cfif>
+                </cfif>
+            </div> 
+            Result : <cfdump var="#Session.mystruct#"> 
