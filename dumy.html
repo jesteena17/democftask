@@ -1,0 +1,100 @@
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jQuery UI Datepicker - Default functionality</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <!--  <link rel="stylesheet" href="/resources/demos/style.css">-->
+
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+
+        <script>
+            $(function () {
+                $("#datepicker").datepicker({
+                    showOn: "both",
+                    buttonImage: "https://rezstream.net/customer/photos/10052/mini_cal_icon.jpg",
+                    buttonImageOnly: true,
+                    buttonText: "Select date"
+                });
+            });
+        </script>
+
+
+        <form action="https://www.reseze.net/servlet/WebresShowAvailable" method="get">
+            <input name="hotelid" value="1509" type="hidden">
+            <input name="buildingCode" value="spv" type="hidden">
+            <input name="roomType" value="SPV027" type="hidden">
+            <input name="PropType" value="b4" type="hidden">
+
+            <input type="hidden" name="be" value="https://www.reseze.net/servlet/WebresResDesk?">
+            <input type="text" name="returnurl" size="200" value="" />
+
+
+            <div class="row">
+                <div class="span3">
+
+
+                    <input type="text" name="arrivalMonth" id="arrivalMonth" />
+                    <input type="text" name="arrivalDay" id="arrivalDay" />
+                    <input type="text" name="arrivalYear" id="arrivalYear" />
+
+
+                    <input type="text" id="datepicker" onchange="updateDate(this.form)"></p>
+
+                    <script>
+                        function updateDate(f) {
+                            var input = document.getElementById('datepicker').value;
+                            var d = new Date(input);
+                            if (!!d.valueOf()) { // Valid date
+                                document.getElementById('arrivalYear').value = d.getFullYear();
+                                document.getElementById('arrivalMonth').value = d.getMonth();
+                                document.getElementById('arrivalDay').value = d.getDate();
+
+                                var MM = parseInt(String(f.arrivalMonth.value), 10) + 1;
+
+                                if (MM < 10) {
+                                    MM = "0" + (MM);
+                                }
+
+                                var DD = String(f.arrivalDay.value);
+                                if (DD < 10) {
+                                    DD = "0" + DD;
+                                }
+                                var RT = String(f.buildingCode.value);
+                                var PT = String(f.PropType.value);
+                                if (RT == "spv") {
+                                    RT = "b3"
+                                }
+                                if (RT == "CCK") {
+                                    RT = "b1"
+                                }
+                                if (RT == "ICK") {
+                                    RT = "b2"
+                                }
+                                if (PT == "b4") {
+                                    RT = PT
+                                }
+                                f.returnurl.value = String(f.be.value) + "arrivalDate=" + String(f.arrivalYear.value) + MM + DD + "&nightsStay=" + String(f.nightsStay.value) + "&adults=" + String(f.adults.value) + "&children=" + String(f.children.value) + "&age3=" + String(f.age3.value) + "&hotelid=" + String(f.hotelid.value) + "&buildingCode=" + String(f.buildingCode.value) + "&roomType=" + RT;
+
+
+                            }
+                        }
+                    </script>
+
+
+                </div>
+
+
+
+                <p align="center"><input class="btn" value="Check Availability" type="submit"></p>
+        </form>
+        </body>
+
+</html>
+
+</body>
+
+</html>

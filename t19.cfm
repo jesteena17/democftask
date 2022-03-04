@@ -11,15 +11,8 @@ Create a cookie named 'VisitsCounter' and every time the submit button is clicke
 
 
 <cfif cgi.REQUEST_METHOD is "post" and structKeyExists(form,"click")>
-
 <cfset Cookie.VisitsCounter++/>
-
 </cfif>
-
-
-
-
-
 <form method="post" action="">
 <input type="submit" name="click" value="click"/>
 </form>

@@ -3,7 +3,7 @@
     it should redirect the user to details page which will show image name, description & original uploaded image. --->
 
 
-<form action="createThumb.cfm" method="post" enctype="multipart/form-data">
+<form action="t14thumb.cfm" method="post" enctype="multipart/form-data">
 image name <input type="text" name="imagenm" required=""/><br>
 image description <textarea name="imgdesc" required=""></textarea><br>
 Please upload an image: <input type="file" required="" name="image"><br>

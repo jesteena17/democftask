@@ -5,4 +5,5 @@
 <cfset this.clientManagement = true>
 <cfset this.setClientCookies = true /> 
 <cfset this.Cookie.VisitsCounter = 0 />
+
 </cfcomponent>
