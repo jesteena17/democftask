@@ -5,5 +5,12 @@
 <cfset this.clientManagement = true>
 <cfset this.setClientCookies = true /> 
 <cfset this.Cookie.VisitsCounter = 0 />
-<cfset application.datasource = "mysqldsn">
+<cfset this.Cookie.demostruct = StructNew()>
+
+
+<cffunction name="onApplicationStart" returntype="boolean" >
+		<cfset application.demostruct = StructNew("ordered-caseinsensitive") />
+		
+		<cfreturn true />
+	</cffunction>
 </cfcomponent>
