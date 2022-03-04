@@ -14,7 +14,7 @@ http://www.richmediacs.com/user_manuals/Dreamweaver/RMCS_CMS/CreateARationalData
 <link rel="stylesheet" href="./css/style.css">
 <script src="./js/jquery-1.12.4.js"></script>
 <script src="./js/jquery-ui.js"></script>
-<script src="./js/jvs.js"></script>
+<script src="./js/t23.js"></script>
 <div class="form">
     <form id="f1" action="" method="post" name="f1" enctype="multipart/form-data" onsubmit="return checkForm(this);">
         <div class="topform">

@@ -35,3 +35,16 @@ employee[Form.key1]=Form.val1;
 <cfelse>
     
 </cfif>
+
+
+  
+  myArray=listToArray(myList,";",false,true); // Using includeEmptyFields=false
+       // Display array elements
+       WriteDump(myArray);
+
+
+
+<cfquery  datasource = "#request.dsn#" username = "#request.un#" password = "#request.pw#">
+INSERT INTO t25(allwords)
+VALUES (<cfqueryparam cfsqltype="cf_sql_varchar" value="#item#">)
+</cfquery>
