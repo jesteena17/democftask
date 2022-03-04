@@ -11,28 +11,14 @@ CFDUMP the structure.
 
 
 -->
-
 <form action="" method="post">
     <input type="text" name="key1" placeholder="enter key"/>
     <input type="text" name="val1" placeholder="enter val"/>
     <input type="submit" name="getdata" value="getdata"/>
  </form>
-
-
- 
 <cfif structKeyExists(form,"getdata") and (cgi.REQUEST_METHOD is "post")>
-  
-
-
-
-
 <cfset  StructInsert(application.demostruct, #form.key1#, #form.val1# )> 
-    
-  
- 
 <cfdump var = #application.demostruct#  >
-
-
 </cfif>
 
   

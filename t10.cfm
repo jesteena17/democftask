@@ -8,29 +8,15 @@ In this task, you should show the keys in alphabetical order.
 
 
 -->
-
-
-
 <form action="" method="post">
     <input type="text" name="key1" placeholder="enter key"/>
     <input type="text" name="val1" placeholder="enter val"/>
     <input type="submit" name="getdata" value="getdata"/>
  </form>
-
-
- 
 <cfif structKeyExists(form,"getdata") and (cgi.REQUEST_METHOD is "post")>
-
 <cfset  StructInsert(application.demostruct, #form.key1#, #form.val1# )> 
-  
-
 <cfset sorted = structSort(application.demostruct, "text", "asc")> 
-
-
-
 <cfdump var = #application.demostruct#  >
-
-
 </cfif>
 
   

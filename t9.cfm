@@ -15,33 +15,17 @@ CFDUMP the structure.
 This is different from CF_Struct_3 task. If I enter ColdFusion and ColdFusion is already present,
  then the system should say, 'ColdFusion already present. Cannot add again'
 -->
-
-
-
 <form action="" method="post">
     <input type="text" id="key1" name="key1" placeholder="enter key"/>
     <input type="text" name="val1" placeholder="enter val"/>
     <input type="submit" name="getdata" value="getdata"/>
  </form>
-
-
-
 <cfif structKeyExists(form,"getdata") and (cgi.REQUEST_METHOD is "post")>
-  
 <cfif StructKeyExists(application.demostruct, #form.key1#)>
-
 <script>
-
  alert("data already present. Cannot add again")</script>
- 
 <cfelse>
    <cfset  StructInsert(application.demostruct, #form.key1#, #form.val1# )> 
-    
 </cfif>
-   
-  
- 
 <cfdump var = #application.demostruct#  >
-
-
 </cfif>
