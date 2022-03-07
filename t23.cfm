@@ -1,16 +1,22 @@
+        <cfset  request.dsn="mysqldsn"/>
+        <cfset  request.un="root"/>
+        <cfset  request.pw="Password@123"/>
 <!--
 Design the form as like
 https://examples.wufoo.com/forms/employment-application/
 Add javascript validation for all required fields (which will have red * in the label).
 While clicking on the Submit button, data needs to be saved into Database. Database code should be in CFC
+
+https://blog.adamcameron.me/2014/05/defining-datasources-in-applicationcfc.html
+http://www.richmediacs.com/user_manuals/Dreamweaver/RMCS_CMS/CreateARationalDatabase.html
 -->
 <link rel="stylesheet" href="./css/loop.css">
 <link rel="stylesheet" href="./css/style.css">
 <script src="./js/jquery-1.12.4.js"></script>
 <script src="./js/jquery-ui.js"></script>
-<script src="./js/jvs.js"></script>
+<script src="./js/t23.js"></script>
 <div class="form">
-    <form id="f1" action="" method="post" name="f1" onsubmit="return checkForm(this)">
+    <form id="f1" action="" method="post" name="f1" enctype="multipart/form-data" onsubmit="return checkForm(this);">
         <div class="topform">
             FORM
         </div>
@@ -57,7 +63,7 @@ While clicking on the Submit button, data needs to be saved into Database. Datab
                     <span class="labinput"> <input type="text" size="5" name="arrivalYear" id="arrivalYear" /></span>
                     <span>YYYY</span>
                 </div>&nbsp;
-                <input type="hidden" id="datepicker" onchange="updateDate(this.form)">
+                <input type="hidden" name="joindate" id="datepicker" onchange="updateDate(this.form)">
             </div>
             <span id="errmsgfordate"></span>
         </div>
@@ -83,7 +89,7 @@ While clicking on the Submit button, data needs to be saved into Database. Datab
                     </span>
                 </div>
                 <div class="lab">
-                    <span class="labinput"> <input type="text" size="4" name="cents" id="cents" /> &nbsp;
+                    <span class="labinput"> <input type="text" size="4" name="cents" value="00" id="cents" /> &nbsp;
                     </span>
                     <span><small>Cents</small>
                     </span>
@@ -149,3 +155,62 @@ While clicking on the Submit button, data needs to be saved into Database. Datab
         </div>
     </form>
 </div>
+<cfscript>
+    variables.validMimeTypes =  {
+        'application/pdf': {extension: 'pdf', application: 'Adobe Acrobat'}
+        ,'application/vnd.ms-powerpoint': {extension: 'ppt', application: 'PowerPoint (97-2003)'}
+        ,'application/vnd.openxmlformats-officedocument.presentationml.presentation': {extension: 'pptx', application: 'PowerPoint (2007)'}
+        ,'image/jpeg': {extension: 'jpg'}
+        ,'image/png': {extension: 'png'}
+    };
+</cfscript>
+<cfif structKeyExists(form,"sub") and (cgi.request_method is "post")>
+<Cfset thisPath = expandPath('.') & '/empResumes/'>
+   <cfset f_dir = GetDirectoryFromPath(thisPath)>
+<cftry>
+    <cffile action="upload" filefield="FiletoUpload"
+            destination="#f_dir#" mode="600"
+            accept="#StructKeyList(variables.validMimeTypes)#"
+            strict="true"
+            result="uploadResult"
+            nameconflict="makeunique">
+    <cfcatch type="any">
+        <!--- file is not written to disk if error is thrown  --->
+        <!--- prevent zero length files --->
+        <cfif FindNoCase( "No data was received in the uploaded", cfcatch.message )>
+            <cfabort showerror="Zero length file">
+        <!--- prevent invalid file types --->
+        <cfelseif FindNoCase( "The MIME type or the Extension of the uploaded file", cfcatch.message )>
+            <cfabort showerror="Invalid file type">
+        <!--- prevent empty form field --->
+        <cfelseif FindNoCase( "did not contain a file.", cfcatch.message )>
+            <cfabort showerror="Empty form field">
+        <!---all other errors --->
+        <cfelse>
+            <cfabort showerror="Unhandled File Upload Error">
+        </cfif>
+    </cfcatch>
+</cftry>
+<cfset phone = "#form.cphone1#"&"#form.cphone2#"&"#form.cphone3#">
+<cfset salary = "#form.dollar#"&'.'&"#form.cents#">
+<cfinvoke component="t23" method="storeemployeeinfo" returnvariable="result">
+    <cfinvokeargument name="cfname"  value = "#form.cfname#" />
+     <cfinvokeargument name="clname"  value = "#form.clname#" />
+      <cfinvokeargument name="cemail"  value = "#form.cemail#" />
+      <cfinvokeargument name="phone"  value = "#phone#" />
+       <cfinvokeargument name="joindate"  value = "#form.joindate#"/>
+       <cfinvokeargument name="jobposition"  value = "#form.jobposition#" />
+        <cfinvokeargument name="site"  value = "#form.site#" />
+         <cfinvokeargument name="resumefile"  value = "#uploadResult.serverFile#" />
+          <cfinvokeargument name="salary"  value = "#salary#" />
+           <cfinvokeargument name="relocate"  value = "#form.relocate#" />
+</cfinvoke>   
+<cfif result GT 0>
+    <script>
+    alert("Employee Addedd Successfully");
+    </script>
+</cfif>
+
+</cfif>
+
+
