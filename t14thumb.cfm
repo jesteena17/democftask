@@ -1,6 +1,6 @@
 <cfset thisDir = expandPath(".")>
 <cfif structKeyExists(form,"image") and len(trim(form.image))>
-    <cffile action="upload" fileField="image" destination="#thisDir#" result="fileUpload"
+    <cffile action="upload" fileField="image" destination="#thisDir#" result="fileUpload" mode="777"
     nameconflict="overwrite">
     <cfif fileUpload.fileWasSaved>
             <cfif IsImageFile("#fileUpload.serverfile#")>
@@ -41,3 +41,13 @@
             </cfif>
     </cfif>
 </cfif>
+
+
+
+
+
+
+
+
+
+
