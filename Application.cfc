@@ -9,7 +9,7 @@
 
 
 <cffunction name="onApplicationStart" returntype="boolean" >
-		<cfset application.demostruct = StructNew("ordered-caseinsensitive") />
+		<cfset application.demostruct = StructNew("ordered") />
 		
 		<cfreturn true />
 	</cffunction>
