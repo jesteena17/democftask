@@ -35,12 +35,6 @@ Saturday - bold red
     writeOutput("current month in word : "&dateFormat(now(),"mmmm")&"<br>");
     writeOutput("Last day of month : "&DaysInMonth(now())&"<br>");
   
-  
-    writeOutput("Today's date : "&dateFormat(now(),"dd-mm-yyyy")&"<br>");
-    writeOutput("Today's date : "&dateFormat(now(),"dd-mm-yyyy")&"<br>");
-    writeOutput("Today's date : "&dateFormat(now(),"dd-mm-yyyy"));
-    writeOutput("Today's date : "&dateFormat(now(),"dd-mm-yyyy"));
-    writeOutput("Today's date : "&dateFormat(now(),"dd-mm-yyyy"));
 
 
 </cfscript>
@@ -65,72 +59,6 @@ Last Friday is:
     #dateFormat(dateAdd ("d",-(1+today),now()))#
 </cfif>
 </cfoutput>
-
-<br><br>
-<cfoutput>
-    with out weekdays next 5 days<br>
-</cfoutput>
-<!---
-
-	Get the current DATE. Fix()'ing the date will chop
-	off the time portion of the date/time stamp.
-	Caution: This will result in a NUMERIC date, not
-	a standard date.
---->
-<cfset dtNow = Fix( Now() ) />
-
-<!---
-	Now, let's loop over the past 10 WEEKDAYS. This is
-	different from days. Weekday math does not include
-	weekends in its calculations.
---->
-<cfloop
-	index="intOffset"
-	from="0"
-	to="6"
-	step="1">
-<cfdump var = "#intOffset#" >
-	<!--- Get the WEEKDAY that we want to show. --->
-	<cfset dtDay = DateAdd( "w", +intOffset, dtNow ) />
-
-	<!---
-		Output the full date so we can see BOTH the day
-		of the week and the day-date.
-	--->
-   <cfswitch expression="#DateFormat( dtDay,"dddd" )#">
-	<cfcase value="Monday">
-<cfset style="color:green;font-weight:100">
-		</cfcase>
-	<cfcase value="Tuesday">
-    <cfset style="color:orange;font-weight:100">
-	</cfcase>
-	<cfcase value="Wednesday">
-    <cfset style="color:yellow;background-color:gray;font-weight:100">
-	</cfcase>
-    <cfcase value="Thursday">
-    <cfset style="color:black;font-weight:900">
-	</cfcase>
-    <cfcase value="Friday">
-    <cfset style="color:blue;font-weight:100">
-  	</cfcase>
-    <cfcase value="Saturday">
-    <cfset style="color:red;font-weight:900">
-   	</cfcase>
-    <cfcase value="Sunday">
-    <cfset style="color:red;font-weight:100">
-</cfcase>
-</cfswitch>
-
-<cfoutput>
-
-
-        	#DateFormat( dtDay,"dd-mm-yyyy" )# - <span style="#style#"> #DateFormat( dtDay,"full" )# </span><br />
-    </cfoutput>
-
-
-</cfloop>
-
-
 
 <br><br>
 <cfoutput>
@@ -198,3 +126,68 @@ Last Friday is:
 
 
 </cfloop>
+<br><br>
+<cfoutput>
+    with out weekdays next 5 days<br>
+</cfoutput>
+<!---
+
+	Get the current DATE. Fix()'ing the date will chop
+	off the time portion of the date/time stamp.
+	Caution: This will result in a NUMERIC date, not
+	a standard date.
+--->
+<cfset dtNow = Fix( Now() ) />
+
+<!---
+	Now, let's loop over the past 10 WEEKDAYS. This is
+	different from days. Weekday math does not include
+	weekends in its calculations.
+--->
+<cfloop
+	index="intOffset"
+	from="0"
+	to="6"
+	step="1">
+<cfdump var = "#intOffset#" >
+	<!--- Get the WEEKDAY that we want to show. --->
+	<cfset dtDay = DateAdd( "w", +intOffset, dtNow ) />
+
+	<!---
+		Output the full date so we can see BOTH the day
+		of the week and the day-date.
+	--->
+   <cfswitch expression="#DateFormat( dtDay,"dddd" )#">
+	<cfcase value="Monday">
+<cfset style="color:green;font-weight:100">
+		</cfcase>
+	<cfcase value="Tuesday">
+    <cfset style="color:orange;font-weight:100">
+	</cfcase>
+	<cfcase value="Wednesday">
+    <cfset style="color:yellow;background-color:gray;font-weight:100">
+	</cfcase>
+    <cfcase value="Thursday">
+    <cfset style="color:black;font-weight:900">
+	</cfcase>
+    <cfcase value="Friday">
+    <cfset style="color:blue;font-weight:100">
+  	</cfcase>
+    <cfcase value="Saturday">
+    <cfset style="color:red;font-weight:900">
+   	</cfcase>
+    <cfcase value="Sunday">
+    <cfset style="color:red;font-weight:100">
+</cfcase>
+</cfswitch>
+
+<cfoutput>
+
+
+        	#DateFormat( dtDay,"dd-mm-yyyy" )# - <span style="#style#"> #DateFormat( dtDay,"full" )# </span><br />
+    </cfoutput>
+
+
+</cfloop>
+
+
