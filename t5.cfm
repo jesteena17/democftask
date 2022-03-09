@@ -7,8 +7,8 @@
         <input type="submit" name="getdata" value="getdata"/>
      </form>
     <cfif structKeyExists(form,"getdata") and (cgi.REQUEST_METHOD is "post")>
-        <cfdump var="#sdob#"/>
-        <cfdump var="#mdob#"/>
+        Sons dob - <cfdump var="#sdob#"/><br>
+      Mothers dob -  <cfdump var="#mdob#"/><br>
             <cfset sage = dateDiff("yyyy", sdob, now())>
             <cfset mage = dateDiff("yyyy", mdob, now())>
         <cfoutput>

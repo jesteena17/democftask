@@ -1,6 +1,6 @@
 <cfinvoke component="t25" method="displaydata" returnvariable="result">
 </cfinvoke>
-<cfdump var = "#result#" >   
+<!-- <cfdump var = "#result#" >   -->   
 <table border="1" width="400"> <tr> <th width="50%">Word</th> <th>Count</th> </tr>
 <cfloop  query="#result#">
       <cfif #result.wordcount# GTE 3>

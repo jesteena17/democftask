@@ -4,7 +4,8 @@
         <cfset  request.pw="Password@123"/>
         <cffunction name="displaydata" access="remote" returnType="query" output="false">
         <cfquery  name="getdata"  datasource = "#request.dsn#" username = "#request.un#" password = "#request.pw#">
-                SELECT * from t25 order by wordcount desc;
+                select * from t25 where length(allwords)>=3 group by 
+                wordcount,allwords order by wordcount desc,length(allwords) desc,allwords asc;
         </cfquery>
         <cfreturn getdata>    
         </cffunction>
