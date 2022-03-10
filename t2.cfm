@@ -1,4 +1,7 @@
-<!-- Create a page with text box & submit button. Input for the text box is any number between 1 to 5. Based upon the user input, you should show the corresponding string. 5 is Very good. 4 is good. 3 is fair. 1 & 2 is Ok. Use cfcase to do this functionality. -->
+<!-- Create a page with text box & submit button. 
+Input for the text box is any number between 1 to 5.
+ Based upon the user input, you should show the corresponding string.
+  5 is Very good. 4 is good. 3 is fair. 1 & 2 is Ok. Use cfcase to do this functionality. -->
 
 
 

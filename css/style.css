@@ -33,15 +33,27 @@ body {
 .topform {
   background-color: yellowgreen;
   color: #fff;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  margin-bottom: 34px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 43px;
 }
-
+.p1 {
+  margin-top: 60px;
+}
 .form {
   display: block;
-
-  width: 37%;
+  width: 50%;
   background-color: white;
   position: absolute;
-  left: 31%;
+  left: 26%;
+  right: 26%;
 }
 
 #datefield {
