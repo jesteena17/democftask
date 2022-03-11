@@ -32,6 +32,10 @@ structInsert(employee, "key4", "val4");
 ArrayAppend(allemployee,employee );
 // WriteOutput(employee);
 
+
+structInsert(employee, "key12", "val12");
+// ArrayAppend(allemployee,employee );
+
 </cfscript>
 
 <cfloop array="#allemployee#" item="item">
@@ -59,3 +63,7 @@ ArrayAppend(allemployee,employee );
                 </cfif>
             </div> 
             Result : <cfdump var="#Session.mystruct#"> 
+
+
+
+            

@@ -22,3 +22,23 @@ CFDUMP the structure.
 </cfif>
 
   
+
+
+
+
+<cfset arrGraphData = arrayNew(1)>
+
+  <cfif structKeyExists(form,"getdata") and (cgi.REQUEST_METHOD is "post")>
+  <!-- <cfloop array = "#arrGraphData#" item="item"> -->
+
+  <cfset strGraphData = StructNew()>
+
+    
+        <cfset StructInsert(strGraphData, #form.key1#, #form.value1#)/>
+    
+
+    <cfset arrayAppend(arrGraphData, strGraphData)/>
+  <!-- </cfloop> -->
+
+<cfdump var="#strGraphData#">
+  </cfif>
