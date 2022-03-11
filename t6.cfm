@@ -15,14 +15,8 @@ http://www.kms.tv/cfdocs/Developing_Web_Applications_with_ColdFusion/09_Handling
     <input type="text" name="val1" placeholder="enter val"/>
     <input type="submit" name="getdata" value="getdata"/>
  </form>
-
-
 <cfif structKeyExists(form,"getdata") and (cgi.REQUEST_METHOD is "post")>
-   
-    <CFSET employee=StructNew()>
-    <CFSET value=StructInsert(employee, "#form.key1#", "#form.val1#")>
-<cfdump var="#employee#"/>
-
-
-
+    <cfset employee=StructNew()>
+    <cfset value=StructInsert(employee, "#form.key1#", "#form.val1#")>
+    <cfdump var="#employee#"/>
 </cfif>

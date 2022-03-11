@@ -4,8 +4,7 @@
 <cfset this.Sessionmanagement = TRUE>
 <cfset this.clientManagement = true>
 <cfset this.setClientCookies = true /> 
-<cfset this.Cookie.VisitsCounter = 0 />
-<cfset this.Cookie.demostruct = StructNew()>
+
 
 
 <cffunction name="onApplicationStart" returntype="boolean" >
