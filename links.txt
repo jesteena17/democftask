@@ -1,1 +1,5 @@
 //  http://www.korson.us/CFCs.cfm#creating 
+
+ 
+https://www.3gpp2.org/cfdocs/htmldocs/Developing/WSc3ff6d0ea77859461172e0811cbec09f0b-7fda.html
+http://www.kms.tv/cfdocs/Developing_Web_Applications_with_ColdFusion/09_Handling_Complex_Data_with_Structures/dwa09_10.htm

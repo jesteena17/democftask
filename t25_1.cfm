@@ -23,12 +23,22 @@
                       </cfif> 
                     </cfif>
                   </cfloop>
-                  <cfinvoke component="t2525" method="insertData">
-                      <cfinvokeargument name="word" value="#wordCount#"/> 
-                  </cfinvoke>
-              
-              </cfif>
-              
+                    <cfloop item="index" collection="#wordCount#">
+                        <cfinvoke component="t25" method="insertData" returnvariable="result">
+                        <cfinvokeargument name="word" value="#index#"/> 
+                        <cfinvokeargument name="count" value="#wordCount[index]#"/> 
+                        </cfinvoke>
+                  </cfloop>
+                   <cfif result GT 0>
+                        <script>
+                        alert("Data Addedd Successfully");
+                        </script>
+                        <cfelse>
+                        <script>
+                        alert("error adding dupliacte records");
+                        </script>
+                  </cfif>
+              </cfif> 
           </cfoutput>
       </body>
 </html>

@@ -13,7 +13,7 @@
                     <input type="submit" name="getdata" value="getdata" />
                 </form>
                 <cfif structKeyExists(form,"getdata") and (cgi.REQUEST_METHOD is "post" )>
-                    <cfset keyword="#form.serch#">
+                    <cfset keyword="#form.serch#"/>
                         <cfoutput>
                             #(FindNoCase(keyword, text))? ReplaceNoCase(text, keyword, '<span class="search">' &
                                 Mid(text, FindNoCase(keyword, text), Len(keyword))
