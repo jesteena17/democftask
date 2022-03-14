@@ -35,7 +35,7 @@
                   <cfif uploadResult.fileWasSaved>
                         <cfset myfile = FileRead("#f_dir#/#uploadResult.serverFile#")/>
                         <cfdump var="#myfile#"/>
-                        <cfset words=listToArray(REReplaceNoCase(#myfile#, "[^ A-Z]", "", "All")," ",false,true)/>
+                        <cfset words=listToArray(REReplaceNoCase(#myfile#, "[^ A-Z]", "", "All")," ",false,false)/>
                         <cfset wordCount = structNew("ordered")/>
                         <cfloop index="index" array="#words#">
                         <cfif len(#index#) GTE 3>

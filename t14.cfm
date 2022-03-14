@@ -28,6 +28,8 @@
                                         and #imageGetHeight(myImage)# pixels hight.
                                         </p>            
                                     <cfelse>
+                                         <!-- The interpolation method for resampling. You can specify a specific interpolation algorithm by name (for example,
+                                         hamming),by image quality (for example, mediumQuality), or by performance (for example, highestPerformance). --> 
                                         <cfset ImageScaleToFit(myImage,20,20,"bilinear")>
                                         <cfset newImageName = fileUpload.serverDirectory & "/" &fileUpload.serverFilename & "_thumbnail." &fileUpload.serverFileExt>
                                         <cfimage source="#myImage#" action="write" destination="#newImageName#" overwrite="yes"> 
