@@ -1,6 +1,6 @@
 <cfcomponent> 
         <cffunction name="displaydata" access="remote" returnType="query" output="false">
-        <cfquery  name="getdata"  datasource = "mysqldsn" >
+        <cfquery  name="getdata"     >
                 select * from t25 where length(allwords)>=3 group by 
                 wordcount,allwords order by wordcount desc,length(allwords) desc,allwords asc;
         </cfquery>
@@ -10,7 +10,7 @@
             <cfargument name="word" required="true">
             <cfargument name="count" required="true"> 
             <cfset var returnStg = "">
-            <cfquery  name="addUser"  datasource = "mysqldsn"  result="addResult">
+            <cfquery  name="addUser"      result="addResult">
                         insert into t25 (allwords,wordcount)
                         values(
                     <cfqueryparam value="#arguments.word#" cfsqltype="cf_sql_varchar" > ,

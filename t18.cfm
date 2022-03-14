@@ -11,7 +11,7 @@
           email	- String
           This Query variable should have 3 rows of data.
         </p>");
-            qoptions = { datasource="mysqldsn"} ;
+            qoptions = {  } ;
             myresults=QueryExecute(("SELECT id,name,email FROM task19" ),[],qoptions);
             //  WriteDump(myResult);
             writeOutput("<table border=1>
@@ -30,7 +30,7 @@
               }
             writeOutput("</table>");
           // QueryExecute return type default query 
-          qoptions = {result="myresult", datasource="mysqldsn"} ;
+          qoptions = {result="myresult",  } ;
           myquery = QueryExecute("select * from task19", [] ,qoptions); 
           for(r in myquery)
           {

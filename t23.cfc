@@ -10,7 +10,7 @@
           <cfargument name="resumefile" required="true" >
           <cfargument name="salary" required="true" >
           <cfargument name="relocate" required="true" >
-          <cfquery name = "addemployee" datasource = "mysqldsn" result="myaddResult">
+          <cfquery name = "addemployee"  result="myaddResult">
                     insert into employeeinfo(firstname,lastname,email,contact,joindate,jobpost,portfolio,uploadedresume,salary,relocate) 
                     values (    
                               <cfqueryparam value = "#cfname#" cfsqltype = "cf_sql_varchar"/>,
