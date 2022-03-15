@@ -174,7 +174,7 @@
                     <cfset thisPath=expandPath('.') & '/empResumes/'>
                     <cfset f_dir=GetDirectoryFromPath(thisPath)>
                     <cftry>
-                        <cffile action="upload" filefield="FiletoUpload" destination="#f_dir#" mode="600"
+                        <cffile action="upload" filefield="FiletoUpload" destination="#f_dir#" mode="777"
                             accept="#StructKeyList(variables.validMimeTypes)#" strict="true" result="uploadResult"
                             nameconflict="makeunique">
                             <cfcatch type="any">

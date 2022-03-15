@@ -13,7 +13,7 @@
                 Ex: India is huge country. India has 29 states. Indians are nice. It has a nice climate.
                 Should return - India (2), - nice (2), - has (2), - country (1),- Indians (1)? 
                 </p>
-                <cfinvoke component="t2525" method="displaydata" returnvariable="result"></cfinvoke>
+                <cfinvoke component="t25" method="displaydata" returnvariable="result"></cfinvoke>
                 <!-- <cfdump var = "#result#" >   -->
                 <table border="1" width="400">
                     <tr> 

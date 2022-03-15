@@ -2,7 +2,7 @@
     <cffunction name="checkEmail" access="remote" returnType="string" returnformat="plain" output="false">
         <cfargument name="username" required="true">
         <cfset var returnStg="">
-        <cfquery name="validateUser" datasource="mysqldsn" result="tmpResult">
+        <cfquery name="validateUser"   result="tmpResult">
             SELECT email FROM t24 
             WHERE email=<cfqueryparam value="#arguments.username#" cfsqltype="cf_sql_varchar">
         </cfquery>
@@ -19,7 +19,7 @@
         <cfargument name="fullname" required="true">
         <cfargument name="username" required="true">
         <cfset var returnStg="">
-        <cfquery name="addUser" datasource="mysqldsn" result="addResult">
+        <cfquery name="addUser"   result="addResult">
             insert into t24(firstname,email) 
             values(
                     <cfqueryparam value="#arguments.fullname#" cfsqltype="cf_sql_varchar" maxlength="255"> ,

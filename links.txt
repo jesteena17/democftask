@@ -1,1 +1,40 @@
 //  http://www.korson.us/CFCs.cfm#creating 
+
+ 
+https://www.3gpp2.org/cfdocs/htmldocs/Developing/WSc3ff6d0ea77859461172e0811cbec09f0b-7fda.html
+http://www.kms.tv/cfdocs/Developing_Web_Applications_with_ColdFusion/09_Handling_Complex_Data_with_Structures/dwa09_10.htm
+<cffunction name = "onApplicationStart" >
+    <cfdump var="Application Started">
+</cffunction>
+<cffunction name = "onSessionStart" >
+    <cfdump var="Session Started">
+</cffunction>
+<cffunction name = "onRequestStart" >
+    <cfdump var="Request Started">
+</cffunction>
+<cffunction name = "onRequest" >
+    <cfdump var="Request Process">
+</cffunction>
+<cffunction name = "onRequestEnd" >
+    <cfdump var="Request Ended">
+</cffunction>
+<cffunction name = "onSessionEnd" >
+    <cfdump var="Session Ended">
+</cffunction>
+<cffunction name = "onError" >
+    <cfdump var="Error">
+</cffunction>
+<cffunction name = "onApplicationEnd" >
+    <cfdump var="Application Ended">
+</cffunction>
+<cffunction name = "onApplicationStart" returntype="boolean" >
+   <cflog file="#This.Name#" type="Information" text="Application Started">
+    <cfreturn true>
+</cffunction>
+<cffunction name = "onRequestStart" returntype="boolean">
+    <cfargument name="targetPage" type="string" required="true" >
+    <cfdump var="Request Started">
+     <cfreturn true>
+</cffunction>
+
+https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-tags/tags-c/cfcookie.html
