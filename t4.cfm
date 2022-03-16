@@ -29,56 +29,20 @@ Saturday - bold red
 	</head>
 	<body>
 		<cfoutput>
-			Today's date : #dateFormat(now(),"dd-mm-yyyy")#<br>
-			current Month in numeric : #DateFormat(now(),"mm")#<br>
-			current month in word : #dateFormat(now(),"mmmm")#<br>
-			Last day of month : #DaysInMonth(now())#<br>
-				<cfset today=Now() />
-				<cfset week_number_of_today=dayOfWeek(today)>
-				<!--- 1-sun,2-mon,3-tue,4-wed,5-thu,6-friday,7-sat --->
-				<cfset fridayOffset=(6-week_number_of_today)-7>
-				<cfset mostRecentFriday=dateAdd("d", fridayOffset, today)><br>
-					Last friday date : #dateFormat(mostRecentFriday,"dd-mm-yyyy")# 
-						<br>
-				<cfset today=dayofweek(now())>
-					Last Friday is:
-				<cfif today EQ 7>
-					#dateFormat(dateAdd("d",-1,now()))#
-					<cfelse>
-						#dateFormat(dateAdd ("d",-(1+today),now()))#
-				</cfif>
+		  <cfinvoke component="t4" method="dateFunctions" returnvariable="result"></cfinvoke>
+                 <cfdump var="#result#"/>
+			Today's date : #result.DtToday#<br>
+			current Month in numeric : #result.CurrMonthNum#<br>
+			current month in word : #result.CurrMonthWord#<br>
+			Last day of month : #result.NumDaysInMonth#<br>
+				
+					Last friday date : #result.LastFridayDate# <br>
+				
+					Last Friday is:#result.LastFriDay#
+				
 		              <br><br>					
 					with weekdays last 5 days<br>
-				<cfset dtNow=Fix( Now() ) />
-				<cfloop index="index" from="0" to="6" step="1">
-						<cfset dtDay=DateAdd( "d" , -index, dtNow ) />
-						<cfset stclass="monday"/>
-						<cfswitch expression="#DateFormat( dtDay,"dddd" )#">
-							<cfcase value="Monday">
-								<cfset stclass="monday">
-							</cfcase>
-							<cfcase value="Tuesday">
-								<cfset stclass="tuesday">
-							</cfcase>
-							<cfcase value="Wednesday">
-								<cfset stclass="wed">
-							</cfcase>
-							<cfcase value="Thursday">
-								<cfset stclass="thus">
-							</cfcase>
-							<cfcase value="Friday">
-								<cfset stclass="fri">
-							</cfcase>
-							<cfcase value="Saturday">
-								<cfset stclass="sat">
-							</cfcase>
-							<cfcase value="Sunday">
-								<cfset stclass="sun">
-							</cfcase>
-						</cfswitch>								
-					#DateFormat( dtDay,"dd-mm-yyyy" )# - <span class="#stclass#"> #DateFormat( dtDay,"dddd" )#
-					</span><br />
-				</cfloop>
+				
 				<br><br>	
 			with out weekdays next 5 days<br>
 			<cfset dtNow=Fix( Now() ) />
