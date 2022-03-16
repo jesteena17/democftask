@@ -1,7 +1,7 @@
 <cfcomponent>
     <cffunction name="checkEmail" access="remote" returnType="string" returnformat="plain" output="false">
         <cfargument name="username" required="true">
-        <cfset var returnStg="">
+          <cfset variables.  returnStg="">
         <cfquery name="validateUser"   result="tmpResult">
             SELECT email FROM t24 
             WHERE email=<cfqueryparam value="#arguments.username#" cfsqltype="cf_sql_varchar">
@@ -18,7 +18,7 @@
     <cffunction name="insertData" access="remote" returnType="string" returnformat="plain" output="false">
         <cfargument name="fullname" required="true">
         <cfargument name="username" required="true">
-        <cfset var returnStg="">
+          <cfset variables.  returnStg="">
         <cfquery name="addUser"   result="addResult">
             insert into t24(firstname,email) 
             values(

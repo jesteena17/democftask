@@ -8,7 +8,7 @@
         <cffunction name="insertData" access="remote" returnType="string" returnformat="plain" output="false">
             <cfargument name="word" required="true">
             <cfargument name="count" required="true">   
-                <cfset var returnStg = "">   
+                  <cfset variables.  returnStg = "">   
                 <cfquery  name="addUser"     result="addResult">
                     insert into t26 (allwords,wordcount) 
                     values(

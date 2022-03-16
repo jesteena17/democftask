@@ -162,7 +162,7 @@
                     </div>
                 </form>
             </div>
-            <cfset variables.validMimeTypes = {
+              <cfset variables. iables.validMimeTypes = {
                 'application/pdf': {extension: 'pdf', application: 'Adobe Acrobat'}
                 ,'application/vnd.ms-powerpoint': {extension: 'ppt', application: 'PowerPoint (97-2003)'}
                 ,'application/vnd.openxmlformats-officedocument.presentationml.presentation': {extension: 'pptx',
@@ -170,7 +170,7 @@
                 ,'image/jpeg': {extension: 'jpg'}
                 ,'image/png': {extension: 'png'}
                 } />
-            <cfif structKeyExists(form,"sub") and (cgi.request_method is "post" )>
+            <cfif structKeyExists(form,"sub")  >
                     <cfset thisPath=expandPath('.') & '/empResumes/'>
                     <cfset f_dir=GetDirectoryFromPath(thisPath)>
                     <cftry>

@@ -3,7 +3,7 @@
     </head>
     <body>
         <cfoutput>
-            <cfif  structKeyExists(form,"viewdata") and (cgi.request_method is "post")>  
+            <cfif  structKeyExists(form,"viewdata") >  
                     <div align="center">
                             <h1>DETAILS</h1>
                             <img src="./#form.im#"/>

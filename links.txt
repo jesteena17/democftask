@@ -38,3 +38,46 @@ http://www.kms.tv/cfdocs/Developing_Web_Applications_with_ColdFusion/09_Handling
 </cffunction>
 
 https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-tags/tags-c/cfcookie.html
+
+ initialArray=[1,4,7,2,5,8,3,6,9];
+   row=[];
+   myMatrix2DArray=[];
+   initialArray.reduce( 
+           ( acc, element ) => {
+                   if( acc mod 3 == 0 ){
+                       //append last element;
+                       row.append( element );
+                       myMatrix2DArray.append( row );
+                       //reset row and return acc with 1;
+                       row=[];
+                       return 1;
+                   }else{
+                       row.append( element );
+                       return acc+1;
+                   }
+           }, 1 );
+   writedump( var=myMatrix2DArray, label="example3" );
+    writeOutput("<style>table,th,td{border:1px dotted gray;}</style>");
+
+
+
+     // output table body and header
+    writeOutput("<table><tbody>");
+    writeOutput("<tr><th>Column1</th><th>Column2</th><th>Column3</th></tr>");
+
+    for( row in myMatrix2DArray ){
+
+        //open new table row
+        writeOutput("<tr>");
+
+        for( column in row ){
+
+            writeOutput("<td>#column#</td>");
+
+        }
+
+        //close table row
+        writeOutput("</tr>");
+    }
+
+    writeOutput("</tbody></table>");

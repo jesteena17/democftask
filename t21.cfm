@@ -38,8 +38,8 @@
                   </tr>
                 </table>
               </form>
-              <cfif   StructKeyExists(form, "sub") and cgi.request_method is "post">  
-                    <cfset variables.validMimeTypes =  {
+              <cfif   StructKeyExists(form, "sub")  >  
+                      <cfset variables. iables.validMimeTypes =  {
                             'application/pdf': {extension: 'pdf', application: 'Adobe Acrobat'}
                             ,'application/vnd.ms-powerpoint': {extension: 'ppt', application: 'PowerPoint (97-2003)'}
                             ,'application/vnd.openxmlformats-officedocument.presentationml.presentation': {extension: 'pptx', application: 'PowerPoint (2007)'}

@@ -26,7 +26,7 @@
                         <cfset Session.mystruct = StructNew()>
                     </cflock>
                 </cfif>
-                <cfif structKeyExists(form,"getdata") and (cgi.REQUEST_METHOD is "post")>
+                <cfif structKeyExists(form,"getdata") >
                     <cfif StructKeyExists(Session, "mystruct")>
                         <cfif  StructKeyExists(Session.mystruct,"#form.key1#")>
                                <script>
