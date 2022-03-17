@@ -81,3 +81,167 @@ https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-tags/tags-c/cfcooki
     }
 
     writeOutput("</tbody></table>");
+
+
+               <div class="form">
+                <form id="f1" action="" method="post" name="f1" enctype="multipart/form-data"  onsubmit="return checkForm(this)">
+                    <div class="topform">
+                        FORM
+                    </div>
+                    <p class="p1">
+                    <h4>Employment Application</h4>
+                    <p>Infinity Box Inc.</p>
+                    </p>
+                    <hr>
+                    <div class="common" id="jobpost">
+                        <label for="jobposition" id="jobpostlabels" class="labels">Which position are you applying
+                            for?<span class="star">*</span></label>
+                        <select name="jobposition" class="commonfield" id="jobposition">
+                            <option value=""></option>
+                            <option value="id" #form.jobposition == 'id' ? 'selected="selected"' : ''#>Interface Designer</option>
+                            <option value="se" #form.jobposition == 'se' ? 'selected="selected"' : ''#>Software Engineer</option>
+                            <option value="sa" #form.jobposition == 'sa' ? 'selected="selected"' : ''#>System Administrator</option>
+                            <option value="om" #form.jobposition == 'om' ? 'selected="selected"' : ''#>Office Manager</option>
+                        </select>
+                        <span id="errmsgforpost"></span>
+                    </div>
+                    <div class="common jobrelocate" id="jobrelocate">
+                        <label for="relocate" class="labels">Are you willing to relocate?<span
+                                class="star">*</span></label>
+                        <div>
+                            <input type="radio" name="relocate" value="#form.relocate == 'yes'?'checked':''#" checked id="relocate1">Yes
+                        </div>
+                        <div>
+                            <input type="radio" name="relocate" value="#form.relocate == 'no'?'checked':''#" id="relocate2">No
+                        </div>
+                        <span class="errmsgforrelocate"></span>
+                    </div>
+                    <div class="common jobdate" id="jobdate">
+                        <label for="relocate" class="labels">When can you start? <span class="star">*</span></label>
+                        <div id="datefield">
+                            <div class="lab">
+                                <span class="labinput">
+                                    <input type="text" size="3" name="arrivalMonth" id="arrivalMonth" value="#form.arrivalMonth#" /> /&nbsp;
+                                </span>
+                                <span>MM</span>
+                            </div>
+                            <div class="lab">
+                                <span class="labinput"> <input type="text" size="3" name="arrivalDay" value="#form.arrivalDay#" id="arrivalDay" />
+                                    /&nbsp;
+                                </span>
+                                <span>DD</span>
+                            </div>
+                            <div class="lab">
+                                <span class="labinput"> <input type="text" size="5" name="arrivalYear" value="#form.arrivalYear#" id="arrivalYear" /></span>
+                                <span>YYYY</span>
+                            </div>&nbsp;
+                            <input type="hidden" name="joindate" id="datepicker" onchange="updateDate(this.form)">
+                        </div>
+                        <span id="errmsgfordate"></span>
+                    </div>
+                    <div class="common jobsite" id="jobsite">
+                        <label for="site" class="labels">Portfolio Web Site<span class="star">*</span></label>
+                        <input type="text" class="commonfield" name="site" value="http://#form.site#" id="site" />
+                        <span id="errmsgforjobsite"></span>
+                    </div>
+                    <div class="common resume" id="resume">
+                        <label for="site" class="labels">Attach a Copy of Your Resume<span class="star">*</span></label>
+                        <input type="file" class="commonfield" name="FiletoUpload" id="FiletoUpload"
+                            onchange="return fileValidation()" />
+                        <span id="errmsgforresume"><small>Word or PDF Documents Only</small></span>
+                    </div>
+                    <div class="common salary" id="salary"><br>
+                        <label for="site" class="labels">Salary Requirements<span class="star">*</span></label>
+                        <div id="datefield">
+                            <div class="lab">
+                                <span class="labinput">
+                                    $ <input type="text" size="15" name="dollar" value="#form.dollar#"  id="dollar" /> .&nbsp;
+                                </span>
+                                <span><small>Dollars</small>
+                                </span>
+                            </div>
+                            <div class="lab">
+                                <span class="labinput"> <input type="text" size="4" value="#form.cents#" name="cents" value="00"
+                                        id="cents" /> &nbsp;
+                                </span>
+                                <span><small>Cents</small>
+                                </span>
+                            </div>
+                        </div>
+                        <span id="errmsgforsalary"></span>
+                    </div>
+                    <hr>
+                    <p>Your Contact Information</p>
+                    <div class="common cname" id="cname">
+                        <label for="cname" class="labels">Name<span class="star">*</span></label>
+                        <div id="datefield">
+                            <div class="lab">
+                                <span class="labinput">
+                                    <input type="text" size="15" name="cfname" value="#form.cfname#"  id="cfname" /> &nbsp;
+                                </span>
+                                <span><small>First</small>
+                                </span>
+                            </div>
+                            <div class="lab">
+                                <span class="labinput"> <input type="text" size="15" value="#form.clname#" name="clname" id="clname" /> &nbsp;
+                                </span>
+                                <span><small>Last</small>
+                                </span>
+                            </div>
+                        </div>
+                        <span id="errmsgforname"></span>
+                    </div>
+                    <div class="common email" id="email">
+                        <label for="cemail" class="labels">Email Address<span class="star">*</span></label>
+                        <input type="text" class="commonfield" name="cemail" value="#form.cemail#" id="cemail" />
+                        <span id="errmsgforemail"></span>
+                    </div>
+                    <div class="common phone" id="phone">
+                        <label for="cphone" class="labels">Phone<span class="star">*</span></label>
+                        <div id="datefield">
+                            <div class="lab">
+                                <span class="labinput">
+                                    <input type="text" size="5" name="cphone1" value="#form.cphone1#"  id="cphone1" /> -&nbsp;
+                                </span>
+                                <span><small> ###### </small>
+                                </span>
+                            </div>
+                            <div class="lab">
+                                <span class="labinput">
+                                    <input type="text" size="5" name="cphone2" value="#form.cphone2#"  id="cphone2" /> -&nbsp;
+                                </span>
+                                <span><small> ###### </small>
+                                </span>
+                            </div>
+                            <div class="lab">
+                                <span class="labinput">
+                                    <input type="text" size="5" name="cphone3"  value="#form.cphone3#" id="cphone3" /> &nbsp;
+                                </span>
+                                <span><small> ###### </small>
+                                </span>
+                            </div>
+                        </div>
+                        <span id="errmsgforphone"></span>
+                    </div>
+                    <div>
+                        <input type="submit" name="sub" id="sub" value="Submit" />
+                    </div>
+                </form>
+            </div>
+
+
+             <cfparam name="form.jobposition" default="id">
+<cfparam name="form.relocate" default="yes">
+<cfparam name="form.arrivalMonth" default="02">
+<cfparam name="form.arrivalDay" default="22">
+<cfparam name="form.arrivalYear" default="2022">
+<cfparam name="form.site" default="www.demo.com">
+<cfparam name="form.FiletoUpload" default="">
+<cfparam name="form.dollar" default=1200>
+<cfparam name="form.cents" default=30>
+<cfparam name="form.cfname" default="test">
+<cfparam name="form.clname" default="demo">
+<cfparam name="form.cemail" default="abcddd@gmail.com">
+<cfparam name="form.cphone1" default="998">
+<cfparam name="form.cphone2" default="987">
+<cfparam name="form.cphone3" default="2222"> 
