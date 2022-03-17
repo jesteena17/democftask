@@ -1,15 +1,14 @@
 <cfcomponent displayname="task3" hint="Display only mutiples of 3">
     <cffunction name="multiplesof3" output="false" access="public">
-            <cfset var num = form.num/>
-            <cfset var result = "" />
-            <cfdump var="#num#">
-            <cfloop list = "#form.num#" index = "itm">
+              <cfset variables.num = form.num/>
+              <cfset variables.result = "" />
+            <cfloop list = "#variables.num#" index = "itm">
                      <cfif itm mod 3 EQ 0>
-                            <cfdump var = "#itm#">
+                            <cfset variables.result&=itm&"<br>"/>
                      <cfelse>
                             <cfcontinue>
                      </cfif>
               </cfloop>
-        <cfreturn result>
+        <cfreturn variables.result>
     </cffunction>  
 </cfcomponent>

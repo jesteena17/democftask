@@ -11,7 +11,7 @@
                 <textarea  name="stringdata" rows="5" cols="55">India is huge country. India has  states. Indians are nice. It has a nice climate. i love india and its climate. climate is awesome</textarea>
                 <input type="submit" value="submit" name="store">
             </form>
-            <cfif structKeyExists(form,"store") and (cgi.request_method is "post")>
+            <cfif structKeyExists(form,"store") >
                   <cfset words=listToArray(REReplaceNoCase(#form.stringdata#, "[^ A-Z]", "", "All")," ",false,false)/>
                   <cfset wordCount = structNew("ordered")/>
                   <cfloop index="index" array="#words#">

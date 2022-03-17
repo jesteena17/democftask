@@ -1,6 +1,8 @@
+<cfparam name="form.getnum" default=12 type="integer">
 <html>
       <head>
             <link href="./css/commonstyle.css" rel="stylesheet" />
+            <script src="js/t17.js"></script>
       </head>
       <body>
             <cfoutput>
@@ -12,39 +14,25 @@
                         odd numbers should be in blue, even numbers should be in green.
                   </p>
                   <form id="myForm" action="" method="post" onsubmit="return check(this);">
-                        <input type="text" id="getnum"  name="getnum"  />
+                        <input type="text" id="getnum" value="#form.getnum#"  name="getnum"  />
                         <input type="submit" name="sub" id="sub"  value="enter number"/>
                   </form>
                   <span id="demo"></span><br>
-                  <cfif structKeyExists(form,"sub") and (cgi.REQUEST_METHOD is "post" )>
+                  <cfif structKeyExists(form,"sub")  >
                         <cfif IsNumeric(form.getnum)>
                               <cfloop index = "i" from = "1" to = "#form.getnum#" step = "1">
-                                    <cfif i mod 2 EQ 0>
-                                          <span  class="monday spn">Even  : #i# </span><br>
-                                    <cfelse>
-                                          <span class="fri spn">Odd  : #i# </span><br>
-                                    </cfif>
+                                   <cfinvoke component="t15" method="EvenOdd" returnvariable="result">
+                                        <cfinvokeargument name="numin" value=#i#/> 
+                                   </cfinvoke>
+                                   <cfif  result eq "even">
+                                        <span  class="Monday spn">Even  : #i# </span><br>
+                                   <cfelse>
+                                        <span class="Friday spn">Odd  : #i# </span><br>
+                                   </cfif>
                               </cfloop>
                         </cfif>
                   </cfif>
             </cfoutput>
-            <script>
-            function check(form)
-            {  
-                  let text;
-                  if (!(/^[0-9]+$/.test(form.getnum.value))) 
-                  {
-                        text = "Input only valid numbers";                     
-                        document.getElementById("demo").innerHTML = text;
-                        document.getElementById("demo").style.color = "red";
-                       [].forEach.call(document.querySelectorAll('.spn'), function (el) {
-                        el.style.visibility = 'hidden';
-                        }); 
-                       return false;
-                  }    
-                  return true;
-            }
-            </script>
       </body>
 </html>
 

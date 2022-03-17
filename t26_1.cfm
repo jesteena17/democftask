@@ -11,7 +11,7 @@
             </form>
             <cfset thisPath = expandPath('.') & '/myUploads/'>
             <cfset f_dir = GetDirectoryFromPath(thisPath)>
-            <cfif (cgi.request_method IS "post") AND (structKeyExists(form, "registerbtn"))> 
+            <cfif  (structKeyExists(form, "registerbtn"))> 
                    <cftry>
                         <cffile action="upload" filefield="FiletoUpload"
                         destination="#f_dir#"

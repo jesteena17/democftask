@@ -1,16 +1,16 @@
 <cfcomponent displayname="task1" hint="Grad enumber using if else">
     <cffunction name="gradeNumber" output="false" access="public">
-            <cfset var num = form.num/>
-            <cfset var result = "" />
-            <cfif num eq 5>
-                <cfset var result = "Very Good" >
-            <cfelseif num eq 4>
-                <cfset var result = "Good" >
-            <cfelseif num eq 3>
-                <cfset var result = "Fair" >
+              <cfset variables.num = form.num/>
+              <cfset variables.result = "" />
+            <cfif variables.num eq 5>
+                  <cfset   variables.result = "Very Good" >
+            <cfelseif variables.num eq 4>
+                  <cfset   variables.result = "Good" >
+            <cfelseif variables.num eq 3>
+                  <cfset variables.result = "Fair" >
             <cfelse>
-                <cfset var result = "Ok" >
+                  <cfset variables.result = "Ok" >
             </cfif>
-        <cfreturn result>
+        <cfreturn variables.result>
     </cffunction>  
 </cfcomponent>
