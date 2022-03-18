@@ -1,3 +1,6 @@
+
+<cfparam name="form.key1" default="" type="string">
+<cfparam name="form.val1" default="" type="string">
 <html>
       <head>
       </head>
@@ -18,21 +21,20 @@
                         <input type="text" name="val1" placeholder="enter val"/>
                         <input type="submit" name="getdata" value="getdata"/>
                     </form>
-                    <cfif NOT StructKeyExists(Session, "mystruct")>
-                        <cflock timeout=20 scope="Session" type="Exclusive">
-                            <cfset Session.mystruct = StructNew()>
-                        </cflock>
-                    </cfif>
+                    <cfset variables.myarray=ArrayNew(1)/>
+                    <cfset variables.mystruct = StructNew()>
+                  
                     <cfif structKeyExists(form,"getdata") >
-                        <cfif StructKeyExists(Session, "mystruct")>
-                            <cfif NOT StructKeyExists(Session.mystruct,"#form.key1#")>
-                                    <cfset StructInsert(Session.mystruct, #form.key1#,#form.val1#)> 
-                                </cfif>
-                        </cfif>
-                    </cfif> 
-                    <cfloop collection = "#session.mystruct#" item = "index">
-                    #index#-#session.mystruct[index]#<br>
-                </cfloop>
+                         <cfloop from = "1" to = "#arrayLen(variables.myarray)#" index = "i" step = "1">
+                            <cfif not StructKeyExists(variables.myarray[i],[form.key1])>
+                                 <cfset StructInsert(variables.mystruct, #form.key1#,#form.val1#)>
+                            <cfset ArrayAppend(variables.myarray[i], variables.mystruct)/>
+                                 
+                            </cfif>
+                                <cfset variables.mystruct = StructNew()>
+                       </cfloop>
+                   </cfif> 
+                   <cfdump var=#variables.myarray#/>
             </cfoutput>    
     </body>
 </html>

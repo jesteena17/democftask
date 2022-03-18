@@ -1,5 +1,6 @@
 <html>
     <head>
+          <link href="css/commonstyle.css" rel="stylesheet" />
     </head>
     <body>
         <cfoutput>
@@ -11,25 +12,27 @@
 			then check the entered text is equal to captcha text.
 			If correct then Page should show the message(Email Address successfully subscribe our newsletter).
 			</p>
-			<cfset variables.showForm = true>
+			<cfset variables.showForm=true/>
 			<cfparam name="form.email" default="">
 			<cfparam name="form.captcha" default="">
 			<cfparam name="form.captchaHash" default="">
 			<cfif isDefined("form.sub")>
-				
+				<cfinvoke component="t20" method="validateform" returnvariable="result"></cfinvoke>
+                    <cfset variables.showForm=result.showForm/>
 			</cfif>
 			<cfif(isDefined("form.ref"))>
-				<cfset prod=CreateObject("component","t20")/>
-				<cfset captcha = prod.createcaptcha()>
-				<cfset captchaHash = hash(captcha)>
+				<cfset variables.prod=CreateObject("component","t20")/>
+				<cfset variables.captcha = variables.prod.createcaptcha()>
+				<cfset variables.captchaHash = hash(variables.captcha)>
 			</cfif>
-			<cfif showForm>
-				<cfset prod=CreateObject("component","t20")/>
-				<cfset captcha = prod.createcaptcha()>
-				<cfset captchaHash = hash(captcha)>
-				<cfif isDefined("errors")>
+			<cfif variables.showForm>
+				<cfset variables.prod=CreateObject("component","t20")/>
+				<cfset variables.captcha = variables.prod.createcaptcha()>
+				<cfset variables.captchaHash = hash(variables.captcha)>
+				<cfif isDefined("result.errors")>
 					<p align="center">
-						<b>Correct these errors:<br /><span style="color:red">#errors#</span></b>
+						<b>Correct these errors:<br />
+                              <span style="color:red">#result.errors#</span></b>
 					</p>
 				</cfif>
                     <form action="" method="post" >
@@ -56,7 +59,7 @@
                          </table>
                     </form>
 			<cfelse>
-				<p>
+				<p class="Monday">
 				     Email Address #form.email# successfully subscribed to our newsletter 
 				</p>
 			</cfif>
