@@ -10,7 +10,7 @@
               </form>
               <cfif (structKeyExists(form,"sub"))>
                     <cfinvoke component="t12" method="displaydata" returnvariable="result"></cfinvoke>
-                    <cfset edata = QueryGetRow(result, #form.getnum#) >
+                    <cfset edata = QueryGetRow(result, form.getnum) >
                     <cfdump var="Data of Entered number:  #edata.firstName#  -  #edata.lastName#">
                     <br>
                     <table border="1">

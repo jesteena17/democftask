@@ -21,20 +21,27 @@
                         <input type="text" name="val1" placeholder="enter val"/>
                         <input type="submit" name="getdata" value="getdata"/>
                     </form>
-                    <cfset variables.myarray=ArrayNew(1)/>
-                    <cfset variables.mystruct = StructNew()>
-                  
+      
+<cflock scope="Application" timeout="10" type="Exclusive"> 
+<cfif not IsDefined("x")> 
+<cfset x = 0> 
+
+                 <cfset  array = ArrayNew(1)>  
+</cfif> 
+</cflock>
+              
                     <cfif structKeyExists(form,"getdata") >
-                         <cfloop from = "1" to = "#arrayLen(variables.myarray)#" index = "i" step = "1">
-                            <cfif not StructKeyExists(variables.myarray[i],[form.key1])>
-                                 <cfset StructInsert(variables.mystruct, #form.key1#,#form.val1#)>
-                            <cfset ArrayAppend(variables.myarray[i], variables.mystruct)/>
-                                 
-                            </cfif>
-                                <cfset variables.mystruct = StructNew()>
-                       </cfloop>
+                        <cfinvoke component="t15" method="t19Cookies" returnvariable="result"></cfinvoke>
+                        
+                              <cfset mystruct = StructNew()>
+                               <cfset StructInsert(mystruct, #form.key1#,#form.val1#)>
+                       
+                        <cfset array[result] = mystruct>
+                    
                    </cfif> 
-                   <cfdump var=#variables.myarray#/>
+    
+                       
+                  <cfdump var= #array# />
             </cfoutput>    
     </body>
 </html>

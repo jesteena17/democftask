@@ -1,6 +1,7 @@
 <cfscript> 
-   function multiply() { 
-   var res=1;
+   function multiply() 
+   { 
+     var res=1;
       for (a in arguments) 
       {
              res=res*a;

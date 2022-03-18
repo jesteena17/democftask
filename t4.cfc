@@ -13,15 +13,15 @@
             <cfset StructInsert(variables.result, "LastFridayDate", dateFormat(variables.mostRecentFriday,"dd-mm-yyyy"))/>
             <cfset variables.today=dayofweek(now())>
             <cfif variables.today EQ 7>
-                <cfset StructInsert(variables.result, "LastFriDay", dateFormat(dateAdd("d",-1,now())))/>
+                    <cfset StructInsert(variables.result, "LastFriDay", dateFormat(dateAdd("d",-1,now())))/>
             <cfelse>
-                <cfset StructInsert(variables.result, "LastFriDay", dateFormat(dateAdd ("d",-(1+variables.today),now())))/>
+                    <cfset StructInsert(variables.result, "LastFriDay", dateFormat(dateAdd ("d",-(1+variables.today),now())))/>
             </cfif>    
             <cfset variables.dtNow=Fix( Now() ) />
             <cfset variables.prevdays=StructNew()/>
             <cfloop index="index" from="0" to="6" step="1">
-                <cfset variables.dtDay=DateAdd( "d" , -index, variables.dtNow ) />								
-                <cfset structinsert(variables.prevdays,index, DateFormat(variables.dtDay,"dd-mm-yyyy" )&':'&DateFormat(variables.dtDay,"dddd" ) )/>                  
+                    <cfset variables.dtDay=DateAdd( "d" , -index, variables.dtNow ) />								
+                    <cfset structinsert(variables.prevdays,index, DateFormat(variables.dtDay,"dd-mm-yyyy" )&':'&DateFormat(variables.dtDay,"dddd" ) )/>                  
             </cfloop>
             <cfset StructAppend(variables.result, variables.prevdays,false)/>
         <cfreturn variables.result>
