@@ -50,8 +50,8 @@
                </cfcatch>
           </cftry>
           <cfif uploadResult.fileWasSaved>
-               <cfset myfile = FileRead(variables.f_dir/uploadResult.serverFile)/>
-               <cfset variables.words=listToArray(REReplaceNoCase(myfile, "[^ A-Z]", "", "All")," ",false,false)/>
+               <cfset myfile = FileRead("#variables.f_dir#/#uploadResult.serverFile#")/>
+               <cfset variables.words=listToArray(REReplaceNoCase(#myfile#, "[^ A-Z]", "", "All")," ",false,false)/>
                <cfset variables.wordCount = structNew("ordered")/>
                <cfloop index="index" array=#variables.words#>
                     <cfif len(index) GTE 3>

@@ -23,6 +23,7 @@
                </form>
                <cfif structKeyExists(form,"getdata") >
                    <cfinvoke component="t6to10" method="Structex7" returnvariable="result"></cfinvoke>
+                   <cfdump var=#result#/>
                     <cfloop collection = "#result#" item = "index">
                          #index#-#result[index]#<br>
                     </cfloop>

@@ -16,9 +16,7 @@
                </cflock>
           </cfif>
           <cfif StructKeyExists(Session, "mystruct")>
-               <cfif  StructKeyExists(Session.mystruct,variables.d1)>
-                    <cfset structinsert(Session.mystruct, variables.d1,variables.d2,true)>        
-               </cfif>
+               <cfset structinsert(Session.mystruct, variables.d1,variables.d2,true)>        
           </cfif>
           <cfreturn Session.mystruct>
      </cffunction>
@@ -64,7 +62,7 @@
                     <cfset variables.result.output=session.mystruct/>
                     <cfset variables.result.msg="success"/>
                </cfif>
-               </cfif>
+          </cfif>
           <cfreturn variables.result>
      </cffunction>  
 
