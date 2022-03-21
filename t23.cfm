@@ -1,4 +1,4 @@
- <cfparam name="form.jobposition" default="">
+<cfparam name="form.jobposition" default="">
 <cfparam name="form.relocate" default="">
 <cfparam name="form.arrivalMonth" default="">
 <cfparam name="form.arrivalDay" default="">
@@ -176,8 +176,8 @@
                     </form>
                </div>
                <cfif structKeyExists(form,"sub")  >
-                         <cfset phone="#form.cphone1#" &"#form.cphone2#"&"#form.cphone3#">
-                         <cfset salary="#form.dollar#" &'.'&"#form.cents#">
+                         <cfset phone=form.cphone1 &form.cphone2&form.cphone3>
+                         <cfset salary=form.dollar &'.'&form.cents>
                          <cfinvoke component="t23" method="uploadfile" returnvariable="fileresult"></cfinvoke>
                          <cfinvoke component="t23" method="storeemployeeinfo" returnvariable="result">
                               <cfinvokeargument name="cfname" value="#form.cfname#" />

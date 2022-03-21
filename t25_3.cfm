@@ -17,16 +17,16 @@
                          <th>Count</th> 
                     </tr>
                     <cfloop  query="#result#">
-                         <cfif #result.wordcount# GTE 3>
+                         <cfif result.wordcount GTE 3>
                                    <cfset stclass="big"> 
-                         <cfelseif #result.wordcount#  GTE 2 and result.wordcount LTE 3 >
+                         <cfelseif result.wordcount  GTE 2 and result.wordcount LTE 3 >
                                    <cfset stclass="med" > 
                          <cfelse>
                                    <cfset stclass="smal" > 
                          </cfif>
                          <tr> 
-                                   <td class="#stclass#">#result.allwords#</td> 
-                                   <td  class="#stclass#">#result.wordcount#</td> 
+                              <td class="#stclass#">#result.allwords#</td> 
+                              <td  class="#stclass#">#result.wordcount#</td> 
                          </tr> 
                     </cfloop>
                </table>

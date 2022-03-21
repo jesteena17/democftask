@@ -1,3 +1,5 @@
+<cfparam name="form.key1" default="" type="string">
+<cfparam name="form.val1" default="" type="string">
 <html>
       <head>
       </head>
@@ -19,23 +21,13 @@
                     <input type="text" name="val1" placeholder="enter val"/>
                     <input type="submit" name="getdata" value="getdata"/>
                 </form>
-                <cfif NOT StructKeyExists(Session, "mystruct")>
-                    <cflock timeout=20 scope="Session" type="Exclusive">
-                        <cfset Session.mystruct = StructNew()>
-                    </cflock>
-                </cfif>
+               
                 <cfif structKeyExists(form,"getdata") >
-                    <cfif StructKeyExists(Session, "mystruct")>
-                        <cfif  StructKeyExists(Session.mystruct,"#form.key1#")>
-                                <cfset structupdate(Session.mystruct, #form.key1#,#form.val1#)> 
-                        <cfelse>
-                                <cfset structinsert(Session.mystruct, #form.key1#,#form.val1#)>        
-                        </cfif>
-                    </cfif>
+                         <cfinvoke component="t6to10" method="Structex8" returnvariable="result"></cfinvoke>
+                         <cfloop collection = "#result#" item = "index">
+                              #index#-#result[index]#<br>
+                         </cfloop>
                 </cfif> 
-                <cfloop collection = "#session.mystruct#" item = "index">
-                   #index#-#session.mystruct[index]#<br>
-               </cfloop>
             </cfoutput>    
     </body>
 </html>

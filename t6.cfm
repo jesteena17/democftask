@@ -18,7 +18,7 @@
                 <input type="submit" name="getdata" value="getdata"/>
             </form>
             <cfif structKeyExists(form,"getdata") >
-                <cfinvoke component="t6to10" method="Structex1" returnvariable="result"></cfinvoke>
+                <cfinvoke component="t6to10" method="Structex6" returnvariable="result"></cfinvoke>
                 <cfdump var="#result#"/>
             </cfif>
         </cfoutput>    

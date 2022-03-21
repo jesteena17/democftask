@@ -1,10 +1,10 @@
 <cfcomponent>
     <cffunction name="multiply" output="false" access="public"> 
-          <cfset res = 1>   
+          <cfset variables.res = 1>   
           <cfloop collection="#Arguments#" item="argument">    
-               <cfset res = res * Arguments[argument]>  
+               <cfset variables.res = variables.res * Arguments[argument]>  
           </cfloop> 
-        <cfreturn res> 
+        <cfreturn variables.res> 
     </cffunction>  
      <cffunction name="matrix" output="false" access="public" returnType="array"> 
           <cfset variables.myarray=[1,4,7,2,5,8,3,6,9]/>
@@ -35,15 +35,15 @@
                <cfset variables.result=QueryExecute(("SELECT id,name,email FROM task19" ),[])/> 
           <cfreturn variables.result> 
      </cffunction> 
-          <cffunction name="t19Cookies" output="false" access="public" returnType="numeric">
+     <cffunction name="t19Cookies" output="false" access="public" returnType="numeric">
                <cfset variables.result=0/>
                <cfif IsDefined("Cookie.VisitsCounter") is False>
                     <cfcookie name="VisitsCounter" value="1" />
                     <cfset variables.result=1/>
                <cfelse> 
-                    <cfset variables.result = #cookie.VisitsCounter# />
+                    <cfset variables.result = "#cookie.VisitsCounter#" />
                     <cfset variables.result = variables.result + 1/>
-                    <cfcookie name="VisitsCounter" value=#variables.result# />
+                    <cfcookie name="VisitsCounter" value="#variables.result#" />
                </cfif>  
           <cfreturn Cookie.VisitsCounter> 
      </cffunction>
