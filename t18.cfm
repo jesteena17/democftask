@@ -19,7 +19,7 @@
                          <th>name</th>
                          <th>email</th>
                     </tr>
-                    <cfloop Query="#result#">
+                    <cfloop Query="result">
                          <tr>
                               <td>#result.id#</td>
                               <td>#result.name#</td>

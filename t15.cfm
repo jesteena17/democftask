@@ -4,10 +4,10 @@
     <body>
         <cfoutput>
               <cfinvoke component="t15" method="multiply" returnvariable="result">
-                  <cfinvokeargument name="a" value="10"/> 
-                  <cfinvokeargument name="b" value="20"/> 
-                  <cfinvokeargument name="c" value="20"/> 
-                  <cfinvokeargument name="d" value="20"/> 
+                    <cfinvokeargument name="a" value="10"/> 
+                    <cfinvokeargument name="b" value="20"/> 
+                    <cfinvokeargument name="c" value="20"/> 
+                    <cfinvokeargument name="d" value="20"/> 
               </cfinvoke>
               <br>
               product using cfinvoke :   #result#<br>

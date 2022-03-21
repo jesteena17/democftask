@@ -16,10 +16,10 @@
                          <th width="50%">Word</th> 
                          <th>Count</th> 
                     </tr>
-                    <cfloop  query="#result#">
-                         <cfif #result.wordcount# GTE 3>
+                    <cfloop  query=result>
+                         <cfif result.wordcount GTE 3>
                               <cfset stclass="big"> 
-                         <cfelseif #result.wordcount#  GTE 2 and result.wordcount LTE 3 >
+                         <cfelseif result.wordcount  GTE 2 and result.wordcount LTE 3 >
                               <cfset stclass="med" > 
                          <cfelse>
                               <cfset stclass="smal" > 

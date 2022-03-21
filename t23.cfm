@@ -29,15 +29,16 @@
                     While clicking on the Submit button, data needs to be saved into Database. Database code should be in
                     CFC https://blog.adamcameron.me/2014/05/defining-datasources-in-applicationcfc.html
                     http://www.richmediacs.com/user_manuals/Dreamweaver/RMCS_CMS/CreateARationalDatabase.html
-               <p>
+               </p>
                <div class="form">
                     <form id="f1" action="" method="post" name="f1" enctype="multipart/form-data"
                          onsubmit="return checkForm(this);">
                          <div class="topform">FORM</div>
                          <div class="p1">
                               <h4>Employment Application</h4>
-                         </div>Infinity Box Inc.</p>
-                         </p>
+                              <p>Infinity Box Inc.</p>
+                         </div>
+                         
                          <hr>
                          <div class="common" id="jobpost">
                               <label for="jobposition" id="jobpostlabels" class="labels">Which position are you applying

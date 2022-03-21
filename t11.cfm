@@ -10,7 +10,7 @@
    } 
 </cfscript>
 <cfset res = multiply(1,2)>
-<cfdump var=#"inputs 1,2 "&res#><br>
+<cfdump var=#"inputs 1,2  "&res#><br>
 <cfset res = multiply(1,2,3)>
 <cfdump var=#res#><br>
 <cfset res = multiply(1,2,3,4)>

@@ -3,7 +3,7 @@
           <link href="css/commonstyle.css" rel="stylesheet" />
     </head>
     <body>
-        <cfoutput>
+          <cfoutput>
 			<p>Create a page with two textboxes (captcha and email). 
 			Create captcha using cfimage tag.
 			To validate the fields captcha(text validation) and email(email validation)

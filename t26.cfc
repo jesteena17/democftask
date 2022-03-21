@@ -25,42 +25,42 @@
                <cfreturn variables.returnStg>    
         </cffunction>
         <cffunction name = "addcount" returnType = "struct" access = "public" >
-                    <cfset variables.thisPath = expandPath('.') & '/myUploads/'>
-                    <cfset variables.f_dir = GetDirectoryFromPath(variables.thisPath)>
-                    <cftry>
-                        <cffile action="upload" filefield="FiletoUpload"
-                        destination="#variables.f_dir#"
-                        accept="text/plain"
-                        strict="true"
-                        result="uploadResult"
-                        mode="777"
-                        nameconflict="makeunique">
-                         <cfcatch type="any">
-                              <cfif FindNoCase( "No data was received in the uploaded", cfcatch.message )>
-                                    <cfabort showerror="Zero length file">
-                              <cfelseif FindNoCase( "The MIME type or the Extension of the uploaded file", cfcatch.message )>
-                                    <cfabort showerror="Invalid file type">
-                              <cfelseif FindNoCase( "did not contain a file.", cfcatch.message )>
-                                    <cfabort showerror="Empty form field">
-                              <cfelse>
-                                    <cfabort showerror="Unhandled File Upload Error">
-                               </cfif>
-                         </cfcatch>
-                    </cftry>
-                    <cfif uploadResult.fileWasSaved>
-                        <cfset myfile = FileRead("#f_dir#/#uploadResult.serverFile#")/>
-                        <cfset variables.words=listToArray(REReplaceNoCase(#myfile#, "[^ A-Z]", "", "All")," ",false,false)/>
-                        <cfset variables.wordCount = structNew("ordered")/>
-                        <cfloop index="index" array="#variables.words#">
-                              <cfif len(#index#) GTE 3>
-                                        <cfif structKeyExists(variables.wordCount, index)>
-                                                  <cfset variables.wordCount[index]++ />
-                                        <cfelse>
-                                                  <cfset variables.wordCount[index] = 1/>
-                                        </cfif> 
+               <cfset variables.thisPath = expandPath('.') & '/myUploads/'>
+               <cfset variables.f_dir = GetDirectoryFromPath(variables.thisPath)>
+               <cftry>
+                    <cffile action="upload" filefield="FiletoUpload"
+                    destination="#variables.f_dir#"
+                    accept="text/plain"
+                    strict="true"
+                    result="uploadResult"
+                    mode="777"
+                    nameconflict="makeunique">
+                    <cfcatch type="any">
+                         <cfif FindNoCase( "No data was received in the uploaded", cfcatch.message )>
+                                   <cfabort showerror="Zero length file">
+                         <cfelseif FindNoCase( "The MIME type or the Extension of the uploaded file", cfcatch.message )>
+                                   <cfabort showerror="Invalid file type">
+                         <cfelseif FindNoCase( "did not contain a file.", cfcatch.message )>
+                                   <cfabort showerror="Empty form field">
+                         <cfelse>
+                                   <cfabort showerror="Unhandled File Upload Error">
                               </cfif>
-                        </cfloop>
-                    </cfif>
+                    </cfcatch>
+               </cftry>
+               <cfif uploadResult.fileWasSaved>
+                    <cfset myfile = FileRead(variables.f_dir/uploadResult.serverFile)/>
+                    <cfset variables.words=listToArray(REReplaceNoCase(myfile, "[^ A-Z]", "", "All")," ",false,false)/>
+                    <cfset variables.wordCount = structNew("ordered")/>
+                    <cfloop index="index" array=#variables.words#>
+                         <cfif len(index) GTE 3>
+                              <cfif structKeyExists(variables.wordCount, index)>
+                                   <cfset variables.wordCount[index]++ />
+                              <cfelse>
+                                   <cfset variables.wordCount[index] = 1/>
+                              </cfif> 
+                         </cfif>
+                    </cfloop>
+               </cfif>
                <cfreturn  variables.wordCount> 
         </cffunction>
 </cfcomponent>

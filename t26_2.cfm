@@ -20,7 +20,7 @@
                         <th width="50%">Word</th>
                         <th>Count</th> 
                     </tr>
-                    <cfloop  query="#result#">
+                    <cfloop  query=result>
                         <tr> 
                             <td >#result.allwords#</td>
                             <td >#result.wordcount#</td> 
