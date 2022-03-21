@@ -8,7 +8,7 @@
           <cfif  len(trim(variables.imagefile))>
                <cffile action="upload" fileField="image" destination="#variables.thisDir#" result="fileUpload" mode="777" nameconflict="overwrite">
                <cfif fileUpload.fileWasSaved>
-                    <cfif IsImageFile("#fileUpload.serverfile#")>
+                    <cfif IsImageFile(fileUpload.serverfile)>
                          <cfimage action="read" source="#fileUpload.serverfile#" name="myImage">
                          <cfif ImageGetHeight(myImage) gt 900 or ImageGetWidth(myImage) gt 900>
                               <cffile action="delete" file="#fileUpload.serverDirectory#/#fileUpload.serverFile#">

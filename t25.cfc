@@ -1,16 +1,17 @@
 <cfcomponent> 
      <cffunction name="displaydata" access="public" returnType="query" output="false">
-               <cfquery  name="getdata">
+               <cfquery  name="local.getdata">
                     select * from t25 where length(allwords)>=3 group by 
                     wordcount,allwords order by wordcount desc,length(allwords) desc,allwords asc;
                </cfquery>
           <cfreturn getdata>    
      </cffunction>
+
      <cffunction name="insertData" access="public" returnType="string" returnformat="plain" output="false">
           <cfargument name="word" required="true">
           <cfargument name="count" required="true"> 
           <cfset variables.returnStg = "">
-          <cfquery  name="addUser"  result="addResult">
+          <cfquery  name="local.addUser"  result="addResult">
                     insert into t25 (allwords,wordcount)
                     values(
                               <cfqueryparam value="#arguments.word#" cfsqltype="cf_sql_varchar" > ,
@@ -25,6 +26,7 @@
           </cfif>   
           <cfreturn variables.returnStg>    
      </cffunction>
+     
      <cffunction name = "addcount" returnType = "struct" access = "public" >
           <cfargument name="inputdata" required="true">
           <cfset words=listToArray(REReplaceNoCase(arguments.inputdata, "[^ A-Z]", "", "All")," ",false,false)/>

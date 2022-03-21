@@ -20,9 +20,9 @@
                     </tr>
                     <cfloop array=#result# item="item">
                          <tr>
-                         <td>#item.name#</td>
-                         <td>#item.age#</td>
-                         <td>#item.location#</td>
+                              <td>#item.name#</td>
+                              <td>#item.age#</td>
+                              <td>#item.location#</td>
                          </tr>
                     </cfloop>
                </table>

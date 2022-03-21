@@ -27,9 +27,9 @@
                          <tr>
                               <th>email</th>
                               <td>
-                              <input type="Text" value="#form.MailTo#" name="MailTo">
-                              <input type="hidden" name="mailfrom" value="#form.mailfrom#" />
-                              <input type="hidden" name="subject" value="#form.subject#" />
+                                   <input type="Text" value="#form.MailTo#" name="MailTo">
+                                   <input type="hidden" name="mailfrom" value="#form.mailfrom#" />
+                                   <input type="hidden" name="subject" value="#form.subject#" />
                               </td>
                          </tr>
                          <tr>

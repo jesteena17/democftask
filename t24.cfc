@@ -13,6 +13,7 @@
           </cfif>
           <cfreturn variables.returnStg>
     </cffunction>
+    
     <cffunction name="insertData" access="remote" returnType="string" returnformat="plain" output="false">
           <cfargument name="fullname" required="true">
           <cfargument name="username" required="true">

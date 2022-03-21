@@ -6,6 +6,7 @@
           </cfloop> 
         <cfreturn variables.res> 
      </cffunction>  
+
      <cffunction name="matrix" output="false" access="public" returnType="array"> 
           <cfset variables.myarray=[1,4,7,2,5,8,3,6,9]/>
           <cfset variables.printinrow=ArrayNew(1)/>
@@ -21,6 +22,7 @@
           </cfloop>
         <cfreturn variables.outputarray> 
      </cffunction>  
+
      <cffunction name="EvenOdd" output="false" access="public" returnType="string">
           <cfargument name="numin" type="integer" > 
           <cfset variables.result=""/>
@@ -31,10 +33,12 @@
           </cfif>
           <cfreturn variables.result> 
      </cffunction> 
+
      <cffunction name="t18querydb" output="false" access="public" returnType="query">
           <cfset variables.result=QueryExecute(("SELECT id,name,email FROM task19" ),[])/> 
           <cfreturn variables.result> 
      </cffunction> 
+
      <cffunction name="t19Cookies" output="false" access="public" returnType="any">
           <cfif IsDefined("Cookie.VisitsCounter") is False>
                <cfcookie name="VisitsCounter" value=1 />
@@ -45,4 +49,5 @@
           </cfif>  
           <cfreturn Cookie.VisitsCounter> 
      </cffunction>
+     
 </cfcomponent>
